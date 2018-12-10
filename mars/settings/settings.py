@@ -124,3 +124,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODULE = 'user.UserProfile'
+
+# 配置七牛云
+QINIU_ACCESS_KEY = 'J6mx9qBAYZAKBQRunniBEvgIiMBtBlJb_DEDPot'
+QINIU_SECRET_KEY = 'tmT1_syj1zmN6_Rrt4tEYhWD9fRnbufDQCrY849A'
+QINIU_BUCKET_NAME = 'source'
+QINIU_BUCKET_DOMAIN = 'source.sevnday.com'
+PREFIX_URL = 'http://'
+STATIC_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStaticStorage'
