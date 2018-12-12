@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
 import os
 import sys
 import base64
@@ -40,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user.apps.UserConfig',
+    'users.apps.UsersConfig',
     'head.apps.HeadConfig',
     'ocr.apps.OcrConfig',
 ]
@@ -125,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODULE = 'user.UserProfile'
+AUTH_USER_MODEL = 'users.UserProfile'
 
 # 配置七牛云
 QINIU_ACCESS_KEY = 'J6mx9qBAYZAKBQRunniBEvgIiMBtBlJb_DEDPot'
@@ -148,3 +147,7 @@ JAUTHBASE64 = base64.b64encode('{0}:{1}'.format(JG_APPKEY, JG_MASTERSECRET).enco
 BAIDU_APP_ID = 14994551
 BAIDU_API_KEY = 'VL3vd3VGfx0ZvIeGh2cPAvNl'
 BAIDU_SECRET_KEY = 'uieRMdF7jDi6qQXc129kc8VgW15tIH4y'
+
+# 跨域问题
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True

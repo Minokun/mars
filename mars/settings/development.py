@@ -1,4 +1,4 @@
-from mars.settings.settings import *
+from mars.settings.base import *
 
 DB_NAME = 'mars'
 DB_HOST = 'localhost'
