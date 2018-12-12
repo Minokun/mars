@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import sys
+import base64
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
     'head.apps.HeadConfig',
+    'ocr.apps.OcrConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +132,19 @@ QINIU_ACCESS_KEY = 'J6mx9qBAYZAKBQRunniBEvgIiMBtBlJb_DEDPot'
 QINIU_SECRET_KEY = 'tmT1_syj1zmN6_Rrt4tEYhWD9fRnbufDQCrY849A'
 QINIU_BUCKET_NAME = 'source'
 QINIU_BUCKET_DOMAIN = 'source.sevnday.com'
+
+# 设置默认上传为七牛云
 PREFIX_URL = 'http://'
 STATIC_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStaticStorage'
+
+# 配置极光短信
+JG_APPKEY = '11f7f7fa2f045cd826bb96c8'
+JG_MASTERSECRET = '58d9dcaf33871938b0b98295'
+JAUTHBASE64 = base64.b64encode('{0}:{1}'.format(JG_APPKEY, JG_MASTERSECRET).encode('utf-8'))
+
+# 百度api配置
+BAIDU_APP_ID = 14994551
+BAIDU_API_KEY = 'VL3vd3VGfx0ZvIeGh2cPAvNl'
+BAIDU_SECRET_KEY = 'uieRMdF7jDi6qQXc129kc8VgW15tIH4y'

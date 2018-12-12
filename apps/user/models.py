@@ -27,16 +27,29 @@ class UserProfile(AbstractUser):
         return self.name
 
 
-class VerifyCode(models.Model):
+class VerifyPhoneCode(models.Model):
     '''
     电话验证码
     '''
-    code = models.CharField(max_length=60, verbose_name='验证码', help_text='验证码')
+    code = models.CharField(max_length=6, verbose_name='验证码', help_text='验证码')
     mobile = models.IntegerField(max_length=11, verbose_name='电话', help_text='电话')
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间', help_text='添加时间')
 
     class Meta:
         verbose_name_plural = verbose_name = '短信验证码'
+
+    def __str__(self):
+        return self.code
+
+class VerifyPicCode(models.Model):
+    '''
+    图片验证码
+    '''
+    code = models.CharField(max_length=10, verbose_name='图形验证码', help_text='图形验证码')
+    add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间', help_text='添加时间')
+
+    class Meta:
+        verbose_name_plural = verbose_name = '图片验证码'
 
     def __str__(self):
         return self.code
