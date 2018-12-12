@@ -14,10 +14,10 @@ class UserProfile(AbstractUser):
     }
 
     name = models.CharField(max_length=50, null=True, blank=True, verbose_name='昵称', help_text='昵称')
-    avatar = models.FileField(upload_to='', verbose_name='头像', help_text='头像')
+    avatar = models.FileField(upload_to='', null=True, blank=True, verbose_name='头像', help_text='头像')
     email = models.CharField(max_length=100, null=True, blank=True, verbose_name='邮箱', help_text='邮箱')
-    mobile = models.IntegerField(verbose_name='电话', help_text='电话')
-    gender = models.CharField(max_length=6, choices=GENDER, verbose_name='性别', help_text='性别')
+    mobile = models.IntegerField(null=True, blank=True, verbose_name='电话', help_text='电话')
+    gender = models.CharField(max_length=6, default='other', choices=GENDER, verbose_name='性别', help_text='性别')
     score = models.IntegerField(default=0, verbose_name='积分', help_text='积分')
 
     class Meta:
