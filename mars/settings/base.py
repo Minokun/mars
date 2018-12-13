@@ -127,7 +127,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'users.UserProfile'
 
@@ -139,7 +139,7 @@ QINIU_BUCKET_DOMAIN = 'source.sevnday.com'
 
 # 设置默认上传为七牛云
 PREFIX_URL = 'http://'
-STATIC_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/static/'
+# STATIC_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStaticStorage'
 
