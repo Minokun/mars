@@ -1,9 +1,9 @@
 from mars.settings.settings import *
 
 DB_NAME = 'mars'
-DB_HOST = ''
-DB_USER = 'root'
-DB_PASS = '@1234QWERasdf'
+DB_HOST = 'localhost'
+DB_USER = 'wxk'
+DB_PASS = ''
 
 
 # Database

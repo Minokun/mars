@@ -132,16 +132,16 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'users.UserProfile'
 
 # 配置七牛云
-QINIU_ACCESS_KEY = 'J6mx9qBAYZAKBQRunniBEvgIiMBtBlJb_DEDPot'
+QINIU_ACCESS_KEY = '-J6mx9qBAYZAKBQRunniBEvgIiMBtBlJb_DEDPot'
 QINIU_SECRET_KEY = 'tmT1_syj1zmN6_Rrt4tEYhWD9fRnbufDQCrY849A'
 QINIU_BUCKET_NAME = 'source'
-QINIU_BUCKET_DOMAIN = 'source.sevnday.com'
+QINIU_BUCKET_DOMAIN = 'source.sevnday.com/'
 
 # 设置默认上传为七牛云
 PREFIX_URL = 'http://'
-# STATIC_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStaticStorage'
+MEDIA_URL = PREFIX_URL + QINIU_BUCKET_DOMAIN + '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuStorage'
 
 # 配置极光短信
 JG_APPKEY = '11f7f7fa2f045cd826bb96c8'
