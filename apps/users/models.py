@@ -26,7 +26,7 @@ class UserProfile(AbstractUser):
         verbose_name_plural = verbose_name = '用户信息'
 
     def __str__(self):
-        return self.name
+        return self.name if self.name else self.username
 
 
 class VerifyPhoneCode(models.Model):
