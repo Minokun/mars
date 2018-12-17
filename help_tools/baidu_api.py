@@ -3,6 +3,20 @@ from django.conf import settings
 
 from aip import AipOcr
 
+LANGUAGE_TYPE = (
+    ('CHN_ENG', '中英'),
+    ('ENG', '英文'),
+    ('POR', '葡萄牙语'),
+    ('FRE', '法语'),
+    ('GER', '德语'),
+    ('ITA', '意大利语'),
+    ('SPA', '西班牙语'),
+    ('RUS', '俄语'),
+    ('JAP', '日语'),
+    ('KOR', '韩语'),
+)
+
+
 class BDApi:
     '''
     百度Api接口类
