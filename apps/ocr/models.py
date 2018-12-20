@@ -21,12 +21,17 @@ class PicTextCommon(models.Model):
     update_time = models.DateTimeField(auto_now=True, verbose_name='更新时间', help_text='更新时间')
 
 
-@receiver(signal=signals.pre_save, sender=PicTextCommon)
-def ocrRecOp(instance, **kwargs):
-    # 对上传的图片进行识别
-    url = instance.pic_file.url
-    # 通过百度Api识别图片文字
-    bd = BDApi()
-    res = bd.common_text_recognize(url, 1, language_type=instance.language_type)
-    instance.words_result_num = res['words_result_num']
-    instance.res_text = ''.join([i['words'] + '\r\n' for i in res['words_result']])
+@receiver(signal=signals.post_save, sender=PicTextCommon)
+def ocrRecOp(instance, created, **kwargs):
+    if created:
+        # 对上传的图片进行识别
+        url = instance.pic_file.url
+        # 通过百度Api识别图片文字
+        bd = BDApi()
+        res = bd.common_text_recognize(url, 1, language_type=instance.language_type)
+        if 'error_msg' in res.keys():
+            print('七牛云图片上传错误！')
+        else:
+            instance.words_result_num = res['words_result_num']
+            instance.res_text = ''.join([i['words'] + '\r\n' for i in res['words_result']])
+            instance.save()
