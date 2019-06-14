@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from rest_framework import routers
 
+from ocr.views import PicList
+router = routers.DefaultRouter()
+router.register(r'test', PicList, base_name='test')
 urlpatterns = [
-    path('', admin.site.urls),
-    url('users/', include('users.urls')),
+    url(r'^', include(router.urls)),
+    path(r'admin/', admin.site.urls),
+    url(r'pic/', include('rest_framework.urls'))
 ]
