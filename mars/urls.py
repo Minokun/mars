@@ -17,12 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from rest_framework import routers
+from rest_framework.documentation import include_docs_urls
 
-from ocr.views import PicList
-router = routers.DefaultRouter()
-router.register(r'test', PicList, base_name='test')
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    url(r'', include_docs_urls("图文识别接口文档")),
     path(r'admin/', admin.site.urls),
-    url(r'pic/', include('rest_framework.urls'))
+    url(r'rest/', include('rest_framework.urls')),
+    url(r'ocr', include('ocr.urls'))
 ]
