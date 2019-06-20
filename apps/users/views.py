@@ -6,6 +6,7 @@ from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 from users.models import UserProfile
 
+from rest_framework.authtoken.models import Token
 from rest_framework import status
 from rest_framework import views
 # Create your views here.
@@ -16,5 +17,6 @@ def test(request):
     :param request:
     :return:
     """
-    ret = UserProfile.objects.get(name='全世界').avatar.url
-    return JsonResponse({'res': str(ret)}, status=status.HTTP_200_OK)
+    for user in UserProfile.objects.all():
+        Token.objects.get_or_create(user=user)
+    return JsonResponse({'res': 'ok'}, status=status.HTTP_200_OK)

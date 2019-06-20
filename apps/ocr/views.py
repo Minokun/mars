@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from .serializer import PicTextCommonListSerializer
 from .models import PicTextCommon
-from rest_framework.authentication import SessionAuthentication, BaseAuthentication
-from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 from rest_framework import mixins, viewsets
@@ -20,5 +18,3 @@ class PicList(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.DestroyMode
     """
     serializer_class = PicTextCommonListSerializer
     queryset = PicTextCommon.objects.all()
-    authentication_classes = (SessionAuthentication, BaseAuthentication)
-    permission_classes = (IsAuthenticated, )

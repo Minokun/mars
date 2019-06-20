@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'head.apps.HeadConfig',
     'ocr.apps.OcrConfig',
     'rest_framework',
+    'rest_framework.authtoken'
     # 'xadmin',
     # 'crispy_forms',
     # 'reversion',
