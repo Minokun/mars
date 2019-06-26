@@ -21,10 +21,10 @@ from rest_framework.documentation import include_docs_urls
 from rest_framework.authtoken import views
 
 urlpatterns = [
-    url(r'', include_docs_urls("图文识别接口文档")),
-    path(r'admin/', admin.site.urls),
+    url(r'doc', include_docs_urls("图文识别接口文档")),
+    url(r'admin/', admin.site.urls),
     url(r'^api-token-auth/', views.obtain_auth_token),
-    url(r'rest/', include('rest_framework.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'user/', include('users.urls')),
     url(r'ocr', include('ocr.urls'))
 ]
