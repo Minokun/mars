@@ -3,7 +3,7 @@ from mars.settings.base import *
 DB_NAME = 'mars'
 DB_HOST = 'localhost'
 DB_USER = 'root'
-DB_PASS = '1234QWERasdf@'
+DB_PASS = ''
 
 
 # Database
