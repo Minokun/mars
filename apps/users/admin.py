@@ -17,5 +17,8 @@ class UserProfileAdmin(admin.ModelAdmin):
     upload_img.allow_tags = True
     list_display = ('name', 'mobile', 'gender', 'score', 'upload_img')
     readonly_fields = ['upload_img']
+    search_fields = ('name', 'email')
+
+
 
 admin.site.register(UserProfile, UserProfileAdmin)
